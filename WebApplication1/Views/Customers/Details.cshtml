@@ -1,0 +1,12 @@
+﻿@model Vidly.Models.Customer
+@{ 
+    var customer = Model;
+}
+@{
+    ViewBag.Title = customer.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>@customer.Name</h2>
+
