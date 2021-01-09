@@ -11,15 +11,17 @@
             <th scope="col">
                 Movie
             </th>
+            <th scope="col">
+                Genre
+            </th>
         </tr>
     </thead>
     <tbody>
         @foreach (var movie in Model.Movies)
         {
             <tr>
-                <td>
-                    @movie.Name
-                </td>
+                <td>@movie.Name</td>
+                <td>@movie.Genre.Name</td>
             </tr>
         }
     </tbody>
