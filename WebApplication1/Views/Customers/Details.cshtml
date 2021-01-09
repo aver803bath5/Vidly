@@ -10,3 +10,11 @@
 
 <h2>@customer.Name</h2>
 
+<ul>
+    <li>Membership Type: @Model.MembershipType.Name</li>
+    @if (Model.Birthday.HasValue)
+    {
+        <li>Birthday: @Model.Birthday.Value.ToString("d/M/yyyy")</li>
+    }
+</ul>
+
