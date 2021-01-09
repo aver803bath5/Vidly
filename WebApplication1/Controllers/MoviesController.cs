@@ -30,6 +30,19 @@ namespace Vidly.Controllers
             return View(viewModel);
         }
 
+        [Route("Movies/Details/{id:int}")]
+        public ActionResult Details(int id)
+        {
+            var movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id);
+
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(movie);
+        }
+
         // GET: Movies/Random
         public ActionResult Random()
         {
