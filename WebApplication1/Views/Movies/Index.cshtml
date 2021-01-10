@@ -26,7 +26,7 @@
         {
             <tr>
                 <td>
-                    @Html.ActionLink(movie.Name, "Details", new { Id = movie.Id })
+                    @Html.ActionLink(movie.Name, "Edit", "Movies", new { Id = movie.Id }, null)
                 </td>
                 <td>@movie.Genre.Name</td>
             </tr>
