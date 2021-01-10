@@ -12,9 +12,9 @@
 
 <ul>
     <li>Membership Type: @Model.MembershipType.Name</li>
-    @if (Model.Birthday.HasValue)
+    @if (Model.Birthdate.HasValue)
     {
-        <li>Birthday: @Model.Birthday.Value.ToString("d/M/yyyy")</li>
+        <li>Birthdate: @Model.Birthdate.Value.ToString("d/M/yyyy")</li>
     }
 </ul>
 

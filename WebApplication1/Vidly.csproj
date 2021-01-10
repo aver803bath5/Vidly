@@ -223,6 +223,10 @@
     <Compile Include="Migrations\202101090436011_PopulateGenres.Designer.cs">
       <DependentUpon>202101090436011_PopulateGenres.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101100805585_RenameCustomerBirthDayToBirthDate.cs" />
+    <Compile Include="Migrations\202101100805585_RenameCustomerBirthDayToBirthDate.Designer.cs">
+      <DependentUpon>202101100805585_RenameCustomerBirthDayToBirthDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -230,6 +234,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
+    <Compile Include="Models\Min18YearsIfAMember.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -358,6 +363,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202101090436011_PopulateGenres.resx">
       <DependentUpon>202101090436011_PopulateGenres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101100805585_RenameCustomerBirthDayToBirthDate.resx">
+      <DependentUpon>202101100805585_RenameCustomerBirthDayToBirthDate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
