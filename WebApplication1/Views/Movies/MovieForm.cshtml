@@ -1,9 +1,10 @@
 ﻿@model Vidly.ViewModel.MovieFormVIewModel
 @{
-    ViewBag.Title = "New Movie";
+    string title = Model.Movie == null ? "New Movie" : "Edit Movie";
+    ViewBag.Title = title;
 }
 
-<h2>New Movie</h2>
+<h2>@title</h2>
 
 @using (Html.BeginForm("Save", "Movies"))
 {
