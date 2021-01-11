@@ -25,7 +25,7 @@ namespace Vidly.ViewModel
         [Required]
         public byte? GenreId { get; set; }
 
-        public List<Genre> Genres { get; set; }
+        public IEnumerable<Genre> Genres { get; set; }
 
         public string Title => Id != 0 ? "Edit Movie" : "New Movie";
 
