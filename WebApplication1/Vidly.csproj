@@ -282,6 +282,10 @@
     <Compile Include="Migrations\202101110716361_AddStringLengthToMovieName.Designer.cs">
       <DependentUpon>202101110716361_AddStringLengthToMovieName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101130720040_SeedUsers.cs" />
+    <Compile Include="Migrations\202101130720040_SeedUsers.Designer.cs">
+      <DependentUpon>202101130720040_SeedUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -296,7 +300,6 @@
     <Compile Include="ViewModel\CustomersViewModel.cs" />
     <Compile Include="ViewModel\MoviesFormViewModel.cs" />
     <Compile Include="ViewModel\CustomerFormViewModel.cs" />
-    <Compile Include="ViewModel\MoviesViewModel.cs" />
     <Compile Include="ViewModel\RandomMovieViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -599,6 +602,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202101110716361_AddStringLengthToMovieName.resx">
       <DependentUpon>202101110716361_AddStringLengthToMovieName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101130720040_SeedUsers.resx">
+      <DependentUpon>202101130720040_SeedUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
