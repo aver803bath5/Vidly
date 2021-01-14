@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Http;
 using System.Data.Entity;
+using System.Net.Http;
 using AutoMapper;
 using Vidly.Dtos;
 using Vidly.Models;
@@ -48,6 +49,10 @@ namespace Vidly.Controllers.Api
         [HttpPost]
         public IHttpActionResult CreateMovie(MovieDto movieDto)
         {
+            if (!User.IsInRole(RoleName.CanManageMovies))
+            {
+                throw new HttpResponseException(HttpStatusCode.Forbidden);
+            }
             if (!ModelState.IsValid)
             {
                 return BadRequest();
@@ -67,6 +72,10 @@ namespace Vidly.Controllers.Api
         [HttpPut]
         public void UpdateMovie(MovieDto movieDto)
         {
+            if (!User.IsInRole(RoleName.CanManageMovies))
+            {
+                throw new HttpResponseException(HttpStatusCode.Forbidden);
+            }
             if (!ModelState.IsValid)
             {
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -88,6 +97,10 @@ namespace Vidly.Controllers.Api
         [HttpDelete]
         public void DeleteMovie(int id)
         {
+            if (User.IsInRole(RoleName.CanManageMovies))
+            {
+                throw new HttpResponseException(HttpStatusCode.BadRequest);
+            }
             var movieInDb = _context.Movies.SingleOrDefault(m => m.Id == id);
 
             if (movieInDb == null)
