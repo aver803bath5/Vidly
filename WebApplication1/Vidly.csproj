@@ -230,6 +230,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\CustomersController.cs" />
     <Compile Include="Controllers\Api\MoviesController.cs" />
+    <Compile Include="Controllers\Api\NewRentalsController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -238,6 +239,7 @@
     <Compile Include="Dtos\MembershipTypeDto.cs" />
     <Compile Include="Dtos\MovieDto.cs" />
     <Compile Include="Dtos\GenreDto.cs" />
+    <Compile Include="Dtos\NewRentalDto.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -310,8 +312,13 @@
     <Compile Include="Migrations\202101140630353_AddPhoneToApplicationUser.Designer.cs">
       <DependentUpon>202101140630353_AddPhoneToApplicationUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101150920266_AddRentals.cs" />
+    <Compile Include="Migrations\202101150920266_AddRentals.Designer.cs">
+      <DependentUpon>202101150920266_AddRentals.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\Rental.cs" />
     <Compile Include="ViewModel\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\ExternalLoginListViewModel.cs" />
@@ -646,6 +653,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202101140630353_AddPhoneToApplicationUser.resx">
       <DependentUpon>202101140630353_AddPhoneToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101150920266_AddRentals.resx">
+      <DependentUpon>202101150920266_AddRentals.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
