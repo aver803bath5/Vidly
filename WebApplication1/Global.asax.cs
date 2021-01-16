@@ -8,7 +8,6 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Services.Description;
 using AutoMapper;
-using Vidly.App_Start;
 
 namespace Vidly
 {
