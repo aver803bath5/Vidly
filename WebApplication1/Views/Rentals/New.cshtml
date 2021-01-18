@@ -9,14 +9,14 @@
     <div class="form-group">
         <label>Customer</label>
         <div class="tt-container">
-            <input id="customer" type="text" value="" class="form-control typeahead" />
+            <input id="customer" name="customer" data-rule-validCustomer="true" required type="text" value="" class="form-control" />
         </div>
     </div>
 
     <div class="form-group">
         <label>Movie</label>
         <div class="tt-container">
-            <input id="movie" type="text" value="" class="form-control" />
+            <input id="movie" name="movie" data-rule-atLeastOneMovie="true" type="text" value="" class="form-control" />
         </div>
     </div>
 
@@ -26,13 +26,14 @@
         </div>
     </div>
 
-    <button class="btn btn-primary">submit</button>
+    <button type="submit" class="btn btn-primary">submit</button>
 </form>
 
 @section scripts
 {
+    @Scripts.Render("~/bundles/jqueryval")
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             // ViewModel
             var vm = {
                 movieIds: []
@@ -57,10 +58,10 @@
                     display: "name",
                     source: customers
                 }).on("typeahead:select",
-                    function (e, customer) {
-                        console.log(customer);
-                        vm.customerId = customer.id;
-                    });
+                function(e, customer) {
+                    console.log(customer);
+                    vm.customerId = customer.id;
+                });
 
             var movies = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
@@ -81,27 +82,50 @@
                     display: "name",
                     source: movies
                 }).on("typeahead:select",
-                    function (e, movie) {
-                        $("#movies").append(`<li class='list-group-item'>${movie.name}</li>`);
+                function(e, movie) {
+                    $("#movies").append(`<li class='list-group-item'>${movie.name}</li>`);
 
-                        $("#movie").typeahead("val", "");
+                    $("#movie").typeahead("val", "");
 
-                        vm.movieIds.push(movie.id);
-                    });
+                    vm.movieIds.push(movie.id);
+                });
 
-            $("#newRental").submit(function (e) {
-                e.preventDefault();
+            $.validator.addMethod("validCustomer",
+                function() {
+                    console.log(123);
+                    return vm.customerId && vm.customerId !== 0;
+                },
+                "Please select a valid customer.");
 
-                $.ajax({
-                    url: "/api/newRentals",
-                    method: "POST",
-                    data: vm
-                })
-                    .done(function () {
-                        console.log("done");
-                    }).fail(function () {
+            $.validator.addMethod("atLeastOneMovie",
+                function() {
+                    return vm.movieIds.length > 0;
+                },
+                "Please select at least one movie.");
 
-                    });
+            var validator = $("#newRental").validate({
+                submitHandler: function() {
+                    $.ajax({
+                            url: "/api/newRentals",
+                            method: "POST",
+                            data: vm
+                        })
+                        .done(function() {
+                            toastr.success("Rental successfully recorded.");
+
+                            $("#customer").typeahead("val", "");
+                            $("#movie").typeahead("val", "");
+                            $("#movies").empty();
+
+                            vm = { movieIds: [] };
+
+                            validator.resetForm();
+                        }).fail(function() {
+                            toastr.error("Something unexpected happened.");
+                        });
+
+                    return false;
+                }
             });
         });
     </script>
